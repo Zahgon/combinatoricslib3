@@ -8,7 +8,6 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
 import static org.paukov.combinatorics3.EmptyGenerator.emptyGenerator;
 
 /**
@@ -17,46 +16,38 @@ import static org.paukov.combinatorics3.EmptyGenerator.emptyGenerator;
  */
 public class PermutationGenerator<T> {
 
-  final Collection<T> originalVector;
+    final Collection<T> originalVector;
 
-  PermutationGenerator(Collection<T> originalVector) {
-    this.originalVector = originalVector;
-  }
-
-  public static <T> boolean hasDuplicates(Collection<T> collection) {
-    if (collection.size() <= 1) {
-      return false;
+    PermutationGenerator(Collection<T> originalVector) {
+        this.originalVector = originalVector;
     }
-    Set<T> set = new HashSet<>(collection);
-    return set.size() < collection.size();
-  }
 
-  public IGenerator<List<T>> simple() {
-    return new SimplePermutationGenerator<>(originalVector, false);
-  }
+    public static <T> boolean hasDuplicates(Collection<T> collection) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  public IGenerator<List<T>> simple(TreatDuplicatesAs treatAsIdentical) {
-    return new SimplePermutationGenerator<>(originalVector,
-        TreatDuplicatesAs.IDENTICAL.equals(treatAsIdentical));
-  }
+    public IGenerator<List<T>> simple() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  public IGenerator<List<T>> k(int length) {
-    return new KPermutationGenerator<>(originalVector, length, false);
-  }
+    public IGenerator<List<T>> simple(TreatDuplicatesAs treatAsIdentical) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  public IGenerator<List<T>> k(int length, TreatDuplicatesAs treatAsIdentical) {
-    return new KPermutationGenerator<>(originalVector, length,
-        TreatDuplicatesAs.IDENTICAL.equals(treatAsIdentical));
-  }
+    public IGenerator<List<T>> k(int length) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  public IGenerator<List<T>> withRepetitions(int permutationLength) {
-    return originalVector.isEmpty()
-        ? emptyGenerator()
-        : new PermutationWithRepetitionGenerator<>(originalVector, permutationLength);
-  }
+    public IGenerator<List<T>> k(int length, TreatDuplicatesAs treatAsIdentical) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  public enum TreatDuplicatesAs {
-    DIFFERENT,
-    IDENTICAL
-  }
+    public IGenerator<List<T>> withRepetitions(int permutationLength) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    public enum TreatDuplicatesAs {
+
+        DIFFERENT, IDENTICAL
+    }
 }

@@ -8,24 +8,23 @@ import java.util.stream.Stream;
  * Always empty stub generator.
  */
 class EmptyGenerator<T> implements IGenerator<T> {
-  private static final EmptyGenerator<?> EMPTY = new EmptyGenerator<>();
 
-  private EmptyGenerator() {
-  }
+    private static final EmptyGenerator<?> EMPTY = new EmptyGenerator<>();
 
-  static <T> EmptyGenerator<T> emptyGenerator() {
-    @SuppressWarnings("unchecked")
-    EmptyGenerator<T> g = (EmptyGenerator<T>) EMPTY;
-    return g;
-  }
+    private EmptyGenerator() {
+    }
 
-  @Override
-  public Stream<T> stream() {
-    return Stream.empty();
-  }
+    static <T> EmptyGenerator<T> emptyGenerator() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @Override
-  public Iterator<T> iterator() {
-    return Collections.emptyIterator();
-  }
+    @Override
+    public Stream<T> stream() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

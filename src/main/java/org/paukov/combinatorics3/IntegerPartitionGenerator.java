@@ -9,14 +9,14 @@ import java.util.List;
 
 class IntegerPartitionGenerator implements IGenerator<List<Integer>> {
 
-  final Integer value;
+    final Integer value;
 
-  IntegerPartitionGenerator(Integer value) {
-    this.value = value;
-  }
+    IntegerPartitionGenerator(Integer value) {
+        this.value = value;
+    }
 
-  @Override
-  public Iterator<List<Integer>> iterator() {
-    return new IntegerPartitionIterator(this);
-  }
+    @Override
+    public Iterator<List<Integer>> iterator() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

@@ -36,22 +36,22 @@ import java.util.List;
  */
 class CartesianProductGenerator<T> implements IGenerator<List<T>> {
 
-  final List<List<T>> originalVector;
+    final List<List<T>> originalVector;
 
-  /**
-   * Constructor
-   *
-   * @param vector Vector which is used for generating the Cartesian product.
-   */
-  CartesianProductGenerator(Collection<List<T>> vector) {
-    this.originalVector = new ArrayList<>(vector);
-  }
+    /**
+     * Constructor
+     *
+     * @param vector Vector which is used for generating the Cartesian product.
+     */
+    CartesianProductGenerator(Collection<List<T>> vector) {
+        this.originalVector = new ArrayList<>(vector);
+    }
 
-  /**
-   * Creates an iterator of the cartesian product.
-   */
-  @Override
-  public Iterator<List<T>> iterator() {
-    return new CartesianProductIterator<>(this);
-  }
+    /**
+     * Creates an iterator of the cartesian product.
+     */
+    @Override
+    public Iterator<List<T>> iterator() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

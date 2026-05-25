@@ -13,27 +13,27 @@ import java.util.List;
  */
 public class CombinationGenerator<T> {
 
-  final Collection<T> originalVector;
+    final Collection<T> originalVector;
 
-  CombinationGenerator(Collection<T> originalVector) {
-    this.originalVector = originalVector;
-  }
+    CombinationGenerator(Collection<T> originalVector) {
+        this.originalVector = originalVector;
+    }
 
-  /**
-   * Creates a generator to produce combinations of the given length of elements.
-   * @param length The length of the generated combinations.
-   * @return The requested generator.
-   */
-  public IGenerator<List<T>> simple(int length) {
-    return new SimpleCombinationGenerator<>(originalVector, length);
-  }
+    /**
+     * Creates a generator to produce combinations of the given length of elements.
+     * @param length The length of the generated combinations.
+     * @return The requested generator.
+     */
+    public IGenerator<List<T>> simple(int length) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  /**
-   * Creates a generator to produce combinations with repetitions of the given length of elements.
-   * @param length The length of the generated combinations.
-   * @return The requested generator.
-   */
-  public IGenerator<List<T>> multi(int length) {
-    return new MultiCombinationGenerator<>(originalVector, length);
-  }
+    /**
+     * Creates a generator to produce combinations with repetitions of the given length of elements.
+     * @param length The length of the generated combinations.
+     * @return The requested generator.
+     */
+    public IGenerator<List<T>> multi(int length) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

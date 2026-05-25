@@ -17,7 +17,7 @@ import java.util.stream.StreamSupport;
  */
 public interface IGenerator<T> extends Iterable<T> {
 
-  default Stream<T> stream() {
-    return StreamSupport.stream(Spliterators.spliteratorUnknownSize(iterator(), 0), false);
-  }
+    default Stream<T> stream() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

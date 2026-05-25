@@ -18,82 +18,61 @@ import java.util.List;
  */
 class SimpleCombinationIterator<T> implements Iterator<List<T>> {
 
-  private final SimpleCombinationGenerator<T> generator;
-  private final List<T> currentCombination = new ArrayList<>();
-  // Internal array
-  private final int[] bitVector;
-  private long currentIndex;
-  //Criteria to stop iterating the combinations.
-  private int endIndex = 0;
+    private final SimpleCombinationGenerator<T> generator;
 
-  SimpleCombinationIterator(SimpleCombinationGenerator<T> generator) {
-    this.generator = generator;
-    this.bitVector = new int[generator.combinationLength + 1];
-    for (int i = 0; i <= generator.combinationLength; i++) {
-      this.bitVector[i] = i;
-    }
-    if (generator.originalVector.size() > 0) {
-      this.endIndex = 1;
-    }
-    this.currentIndex = 0;
-  }
+    private final List<T> currentCombination = new ArrayList<>();
 
-  private void setValue(int index, T value) {
-    if (index < this.currentCombination.size()) {
-      this.currentCombination.set(index, value);
-    } else {
-      this.currentCombination.add(index, value);
-    }
-  }
+    // Internal array
+    private final int[] bitVector;
 
-  /**
-   * Returns true if all combinations were iterated, otherwise false
-   */
-  @Override
-  public boolean hasNext() {
-    return !((this.endIndex == 0) || (this.generator.combinationLength
-        > this.generator.originalVector.size()));
-  }
+    private long currentIndex;
 
-  /**
-   * Moves to the next combination
-   */
-  @Override
-  public List<T> next() {
-    this.currentIndex++;
+    //Criteria to stop iterating the combinations.
+    private int endIndex = 0;
 
-    for (int i = 1; i <= this.generator.combinationLength; i++) {
-      int index = this.bitVector[i] - 1;
-      if (this.generator.originalVector.size() > 0) {
-        this.setValue(i - 1, this.generator.originalVector.get(index));
-      }
+    SimpleCombinationIterator(SimpleCombinationGenerator<T> generator) {
+        this.generator = generator;
+        this.bitVector = new int[generator.combinationLength + 1];
+        for (int i = 0; i <= generator.combinationLength; i++) {
+            this.bitVector[i] = i;
+        }
+        if (generator.originalVector.size() > 0) {
+            this.endIndex = 1;
+        }
+        this.currentIndex = 0;
     }
 
-    this.endIndex = this.generator.combinationLength;
-    while (this.bitVector[this.endIndex]
-        == this.generator.originalVector.size() - this.generator.combinationLength + endIndex) {
-      this.endIndex--;
-      if (endIndex == 0) {
-        break;
-      }
-    }
-    this.bitVector[this.endIndex]++;
-    for (int i = this.endIndex + 1; i <= this.generator.combinationLength; i++) {
-      this.bitVector[i] = this.bitVector[i - 1] + 1;
+    private void setValue(int index, T value) {
+        if (index < this.currentCombination.size()) {
+            this.currentCombination.set(index, value);
+        } else {
+            this.currentCombination.add(index, value);
+        }
     }
 
-    // Return a copy of the current combination.
-    return new ArrayList<>(this.currentCombination);
-  }
+    /**
+     * Returns true if all combinations were iterated, otherwise false
+     */
+    @Override
+    public boolean hasNext() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @Override
-  public void remove() {
-    throw new UnsupportedOperationException();
-  }
+    /**
+     * Moves to the next combination
+     */
+    @Override
+    public List<T> next() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @Override
-  public String toString() {
-    return "SimpleCombinationIterator=[#" + this.currentIndex + ", " + this.currentCombination
-        + "]";
-  }
+    @Override
+    public void remove() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    @Override
+    public String toString() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

@@ -19,79 +19,54 @@ import java.util.List;
  */
 class SimpleSubSetIterator<T> implements Iterator<List<T>> {
 
-  private final SimpleSubSetGenerator<T> generator;
-  private final int length;
+    private final SimpleSubSetGenerator<T> generator;
 
-  private final List<T> currentSubSet;
-  private long currentIndex;
+    private final int length;
 
-  /** Internal bit vector, representing the subset. */
-  private final BitSet bitVector;
+    private final List<T> currentSubSet;
 
-  SimpleSubSetIterator(final SimpleSubSetGenerator<T> generator) {
-    this.generator = generator;
-    this.length = generator.originalVector.size();
-    this.currentSubSet = new ArrayList<>(length);
-    this.bitVector = new BitSet(length + 2);
-    this.currentIndex = 0;
-  }
+    private long currentIndex;
 
-  /**
-   * Returns true if iteration is done, otherwise false.
-   *
-   * @see Iterator#hasNext()
-   */
-  @Override
-  public boolean hasNext() {
-    return !bitVector.get(length + 1);
-  }
+    /**
+     * Internal bit vector, representing the subset.
+     */
+    private final BitSet bitVector;
 
-  /**
-   * Returns the next subset if it is available.
-   *
-   * @see Iterator#next()
-   */
-  @Override
-  public List<T> next() {
-    this.currentIndex++;
-    List<T> originalVector = this.generator.originalVector;
-    BitSet bitVector = this.bitVector;
-    int subSetSize = currentSubSet.size();
-    int j = 0;
-
-    for (int i = bitVector.nextSetBit(1); i >= 0; i = bitVector.nextSetBit(i + 1)) {
-      T e = originalVector.get(i - 1);
-      if (j < subSetSize) {
-        currentSubSet.set(j++, e);
-      } else {
-        currentSubSet.add(e);
-      }
+    SimpleSubSetIterator(final SimpleSubSetGenerator<T> generator) {
+        this.generator = generator;
+        this.length = generator.originalVector.size();
+        this.currentSubSet = new ArrayList<>(length);
+        this.bitVector = new BitSet(length + 2);
+        this.currentIndex = 0;
     }
 
-    // Do we have leftovers?
-    if (j < subSetSize) {
-      currentSubSet.subList(j, subSetSize).clear();
+    /**
+     * Returns true if iteration is done, otherwise false.
+     *
+     * @see Iterator#hasNext()
+     */
+    @Override
+    public boolean hasNext() {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
-    int i = 1;
-    while (bitVector.get(i)) {
-      bitVector.clear(i);
-      i++;
+    /**
+     * Returns the next subset if it is available.
+     *
+     * @see Iterator#next()
+     */
+    @Override
+    public List<T> next() {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
-    bitVector.set(i);
 
-    return new ArrayList<>(currentSubSet);
-  }
+    @Override
+    public void remove() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-
-  @Override
-  public void remove() {
-    throw new UnsupportedOperationException();
-  }
-
-
-  @Override
-  public String toString() {
-    return "SimpleSubSetIterator=[#" + currentIndex + ", " + currentSubSet + "]";
-  }
+    @Override
+    public String toString() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

@@ -9,20 +9,19 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
-
 class PermutationWithRepetitionGenerator<T> implements IGenerator<List<T>> {
 
-  final List<T> originalVector;
-  final int permutationLength;
+    final List<T> originalVector;
 
-  PermutationWithRepetitionGenerator(
-      Collection<T> originalVector, int permutationLength) {
-    this.originalVector = new ArrayList<>(originalVector);
-    this.permutationLength = permutationLength;
-  }
+    final int permutationLength;
 
-  @Override
-  public Iterator<List<T>> iterator() {
-    return new PermutationWithRepetitionIterator<>(this);
-  }
+    PermutationWithRepetitionGenerator(Collection<T> originalVector, int permutationLength) {
+        this.originalVector = new ArrayList<>(originalVector);
+        this.permutationLength = permutationLength;
+    }
+
+    @Override
+    public Iterator<List<T>> iterator() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

@@ -53,40 +53,26 @@ import java.util.List;
  */
 class KPermutationGenerator<T> implements IGenerator<List<T>> {
 
-  final Collection<T> originalVector;
-  final int length;
-  final boolean hasDuplicates;
+    final Collection<T> originalVector;
 
-  /**
-   * Constructor
-   *
-   * @param vector Vector which is used for k-permutation generation
-   * @param length number of elements in k-permutation
-   */
-  KPermutationGenerator(Collection<T> vector,
-      int length,
-      boolean hasDuplicates) {
-    this.originalVector = vector;
-    this.length = length;
-    this.hasDuplicates = hasDuplicates;
-  }
+    final int length;
 
-  @Override
-  public Iterator<List<T>> iterator() {
-    if (hasDuplicates) {
-      return Generator.combination(originalVector)
-          .simple(length)
-          .stream()
-          .distinct()
-          .flatMap(combination -> Generator.permutation(combination).simple().stream())
-          .iterator();
+    final boolean hasDuplicates;
+
+    /**
+     * Constructor
+     *
+     * @param vector Vector which is used for k-permutation generation
+     * @param length number of elements in k-permutation
+     */
+    KPermutationGenerator(Collection<T> vector, int length, boolean hasDuplicates) {
+        this.originalVector = vector;
+        this.length = length;
+        this.hasDuplicates = hasDuplicates;
     }
 
-    return Generator.combination(originalVector)
-        .simple(length)
-        .stream()
-        .flatMap(combination -> Generator.permutation(combination)
-            .simple(PermutationGenerator.TreatDuplicatesAs.IDENTICAL).stream())
-        .iterator();
-  }
+    @Override
+    public Iterator<List<T>> iterator() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

@@ -18,86 +18,52 @@ import java.util.List;
  */
 class MultiCombinationIterator<T> implements Iterator<List<T>> {
 
-  private final MultiCombinationGenerator<T> generator;
-  private final List<T> currentCombination = new ArrayList<>();
-  private final int[] bitVector;
-  private long currentIndex;
-  private boolean isEnd; // Criteria to stop iterating
+    private final MultiCombinationGenerator<T> generator;
 
+    private final List<T> currentCombination = new ArrayList<>();
 
-  MultiCombinationIterator(MultiCombinationGenerator<T> generator) {
-    this.generator = generator;
-    this.bitVector = new int[generator.combinationLength];
-    for (int i = 0; i < generator.combinationLength; i++) {
-      bitVector[i] = 0;
-    }
-    this.isEnd = false;
-    this.currentIndex = 0;
-  }
+    private final int[] bitVector;
 
-  private void setValue(int index, T value) {
-    if (index < this.currentCombination.size()) {
-      this.currentCombination.set(index, value);
-    } else {
-      this.currentCombination.add(index, value);
-    }
-  }
+    private long currentIndex;
 
-  @Override
-  public boolean hasNext() {
-    return !isEnd;
-  }
+    // Criteria to stop iterating
+    private boolean isEnd;
 
-  @Override
-  public List<T> next() {
-    this.currentIndex++;
-
-    if (this.bitVector.length == 0) {
-      this.isEnd = true;
-      return new ArrayList<>(this.currentCombination);
-    }
-
-    int size = this.generator.originalVector.size();
-    for (int i = 0; i < this.generator.combinationLength; i++) {
-      int index = bitVector[i];
-      if (size > 0) {
-        this.setValue(i, this.generator.originalVector.get(index));
-      }
-    }
-
-    int combinationLength = this.generator.combinationLength-1;
-    bitVector[combinationLength]++;
-    if (bitVector[combinationLength] > size - 1) {
-      int index = -1;
-      for (int i = 1; i <= bitVector.length; i++) {
-        if (combinationLength - i >= 0) {
-          if (bitVector[combinationLength - i] < size - 1) {
-            index = combinationLength - i;
-            break;
-          }
+    MultiCombinationIterator(MultiCombinationGenerator<T> generator) {
+        this.generator = generator;
+        this.bitVector = new int[generator.combinationLength];
+        for (int i = 0; i < generator.combinationLength; i++) {
+            bitVector[i] = 0;
         }
-      }
-      if (index != -1) {
-        this.bitVector[index]++;
-        for (int j = 1; j < this.bitVector.length - index; j++) {
-          this.bitVector[index + j] = this.bitVector[index];
-        }
-      } else {
-        this.isEnd = true;
-      }
+        this.isEnd = false;
+        this.currentIndex = 0;
     }
 
-    // return a copy of the current combination
-    return new ArrayList<>(this.currentCombination);
-  }
+    private void setValue(int index, T value) {
+        if (index < this.currentCombination.size()) {
+            this.currentCombination.set(index, value);
+        } else {
+            this.currentCombination.add(index, value);
+        }
+    }
 
-  @Override
-  public void remove() {
-    throw new UnsupportedOperationException();
-  }
+    @Override
+    public boolean hasNext() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @Override
-  public String toString() {
-    return "MultiCombinationIterator=[#" + this.currentIndex + ", " + this.currentCombination + "]";
-  }
+    @Override
+    public List<T> next() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    @Override
+    public void remove() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    @Override
+    public String toString() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

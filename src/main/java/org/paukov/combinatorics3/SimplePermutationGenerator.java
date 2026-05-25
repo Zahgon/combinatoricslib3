@@ -5,7 +5,6 @@
 package org.paukov.combinatorics3;
 
 import static org.paukov.combinatorics3.PermutationGenerator.hasDuplicates;
-
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -64,34 +63,30 @@ import java.util.List;
  */
 class SimplePermutationGenerator<T> implements IGenerator<List<T>> {
 
-  final boolean hasDuplicates;
-  final boolean treatAsIdentical;
-  final List<T> originalVector;
+    final boolean hasDuplicates;
 
-  /**
-   * Constructor
-   *
-   * @param vector Vector which is used for permutation generation
-   * @param treatAsIdentical True if the generator should treat the vector as identical
-   */
-  SimplePermutationGenerator(Collection<T> vector,
-      boolean treatAsIdentical) {
-    this.hasDuplicates = hasDuplicates(vector);
-    this.treatAsIdentical = treatAsIdentical;
-    this.originalVector = new ArrayList<>(vector);
-  }
+    final boolean treatAsIdentical;
 
-  @Override
-  public Iterator<List<T>> iterator() {
-    if (isDuplicateIterator()) {
-      return new DuplicatedPermutationIterator<>(this);
-    } else {
-      return new SimplePermutationIterator<>(this);
+    final List<T> originalVector;
+
+    /**
+     * Constructor
+     *
+     * @param vector Vector which is used for permutation generation
+     * @param treatAsIdentical True if the generator should treat the vector as identical
+     */
+    SimplePermutationGenerator(Collection<T> vector, boolean treatAsIdentical) {
+        this.hasDuplicates = hasDuplicates(vector);
+        this.treatAsIdentical = treatAsIdentical;
+        this.originalVector = new ArrayList<>(vector);
     }
-  }
 
-  private boolean isDuplicateIterator() {
-    return (!treatAsIdentical && hasDuplicates);
-  }
+    @Override
+    public Iterator<List<T>> iterator() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    private boolean isDuplicateIterator() {
+        return (!treatAsIdentical && hasDuplicates);
+    }
 }
-

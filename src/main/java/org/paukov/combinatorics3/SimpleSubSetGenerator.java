@@ -9,17 +9,16 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
-
 class SimpleSubSetGenerator<T> implements IGenerator<List<T>> {
 
-  final List<T> originalVector;
+    final List<T> originalVector;
 
-  SimpleSubSetGenerator(Collection<T> originalVector) {
-    this.originalVector = new ArrayList<>(originalVector);
-  }
+    SimpleSubSetGenerator(Collection<T> originalVector) {
+        this.originalVector = new ArrayList<>(originalVector);
+    }
 
-  @Override
-  public Iterator<List<T>> iterator() {
-    return new SimpleSubSetIterator<>(this);
-  }
+    @Override
+    public Iterator<List<T>> iterator() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

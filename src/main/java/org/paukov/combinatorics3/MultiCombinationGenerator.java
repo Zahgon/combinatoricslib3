@@ -57,16 +57,17 @@ import java.util.List;
  */
 class MultiCombinationGenerator<T> implements IGenerator<List<T>> {
 
-  final List<T> originalVector;
-  final int combinationLength;
+    final List<T> originalVector;
 
-  MultiCombinationGenerator(Collection<T> originalVector, int combinationsLength) {
-    this.originalVector = new ArrayList<>(originalVector);
-    this.combinationLength = Math.max(combinationsLength, 0);
-  }
+    final int combinationLength;
 
-  @Override
-  public Iterator<List<T>> iterator() {
-    return new MultiCombinationIterator<>(this);
-  }
+    MultiCombinationGenerator(Collection<T> originalVector, int combinationsLength) {
+        this.originalVector = new ArrayList<>(originalVector);
+        this.combinationLength = Math.max(combinationsLength, 0);
+    }
+
+    @Override
+    public Iterator<List<T>> iterator() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }
